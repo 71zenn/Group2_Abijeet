@@ -1,0 +1,2 @@
+This folder is for GitHub. 
+Upload task of lesson 5 in week 3 of ST4003CMD-Programming: Professional Practice.
