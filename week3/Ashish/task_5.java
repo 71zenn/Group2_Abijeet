@@ -1,8 +1,3 @@
-import java.util.Scanner;
-
-public class task_lesson_5{
-
-    public static void main(String[] args) {
         //1. Write a Java program using a for loop and if statement to
         //   print all numbers between 1 and 50 that are divisible by 
         //   either 3 or 5, but not both.
