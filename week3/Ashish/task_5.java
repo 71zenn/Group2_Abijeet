@@ -59,50 +59,72 @@
         //4. Write a Java program that asks for 10 integers and 
         //   prints only those that are even and greater than 20 
         //   using if and for loops.
-        Scanner newobj = new Scanner(System.in);
-        System.out.println("Enter 10 numbers. ");
-        int number;
-        for (int i = 1; i<11; i++){
-            System.out.print("Input " + i + " -> ");
-            number = newobj.nextInt();
-            if (((number%2)==0) && (number>20)){
-                System.out.println(number + " is even and greater than 20.");
+        import java.util.Scanner;
+
+        public class integers {
+                public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+                int[] numbers = new int[10];
+
+                System.out.println("Enter 10 integers:");
+                for (int i = 0; i < 10; i++) {
+                    numbers[i] = sc.nextInt();
+                }
+
+                System.out.println("Even numbers greater than 20:");
+                for (int i = 0; i < 10; i++) {
+                    if (numbers[i] % 2 == 0 && numbers[i] > 20) {
+                        System.out.print(numbers[i] + " ");
+                    }
+                }
+
+                sc.close();
             }
         }
-        newobj.close(); 
+
 
         //5. Write a Java program that prints the sum of even numbers
         //   and the product of odd numbers between 1 and 10
         //   using a for loop and if condition.
-        int sum = 0;
-        int product = 1;
-        for (int i = 2; i<10; i++){
-            if ((i%2) == 0){
-                sum += i;
-            } else{
-                product *= i;
+        public class evensum {
+            public static void main(String[] args) {
+                int sumEven = 0;
+                int productOdd = 1;
+
+                for (int i = 1; i <= 10; i++) {
+                    if (i % 2 == 0) {
+                        sumEven += i;
+                    } else {
+                        productOdd *= i;
+                    }
+                }
+
+                System.out.println("Sum of even numbers: " + sumEven);
+                System.out.println("Product of odd numbers: " + productOdd);
             }
         }
-        System.out.printf("The sum of even numbers between 1 and 10 is %d.\n", sum);
-        System.out.printf("The product of odd numbers between 1 and 10 is %d.", product); */
+
 
         //6. Write a Java program using a for loop that prints numbers from 1 to 30, but:
         //   Prints “skip” instead of 15,
         //   Doubles any number divisible by 4 before printing,
         //   And prints “done” at the end.
 
-        for (int i = 1; i<=30; i++){
-            if ((i%4) == 0){
-                System.out.print(i*2 + ", ");
-            } else if (i == 15){
-                System.out.println("Skip!");
-            }else if (i == 30){
-                System.out.println("30.");
-            }else{
-                System.out.print(i + ", ");
+        public class done {
+            public static void main(String[] args) {
+                for (int i = 1; i <= 30; i++) {
+                    if (i == 15) {
+                        System.out.println("skip");
+                    } else if (i % 4 == 0) {
+                        System.out.println(i * 4); 
+                    } else {
+                        System.out.println(i);
+                    }
+                }
+                System.out.println("done");
             }
         }
-        System.out.println("Done.");
+
         
         //7. Write a Java program that simulates an ATM PIN verification system.
         //   The program should have a correct PIN stored (for example, 1234) 
@@ -111,23 +133,36 @@
         //   If the user enters the wrong PIN, print "Incorrect PIN, try again".
         //   After three incorrect attempts, print "Account locked".
 
-        Scanner inputobj = new Scanner(System.in);
-        int PIN = 7777;
-        for (int i = 0; i<3; i++){
-            System.out.print("Enter the pin: ");
-            int user_input = inputobj.nextInt();
-            if (PIN == user_input){
-                System.out.println("Acess Granted!");
-                break;
-            } else if (i ==2){
-                System.err.println("Incorrect PIN.");
-                System.out.println("Account locked.");
-            }else{
-            System.err.println("Incorrect PIN, try again.");
-            System.out.println((2-i) + " chance left.\n" );
+        import java.util.Scanner;
+
+        public class ATM {
+            public static void main(String[] args) {
+                final int CORRECT_PIN = 1234;
+                Scanner sc = new Scanner(System.in);
+                int attempts = 0;
+                boolean accessGranted = false;
+
+                while (attempts < 3) {
+                    System.out.print("Enter your PIN: ");
+                    int enteredPIN = sc.nextInt();
+
+                    if (enteredPIN == CORRECT_PIN) {
+                        System.out.println("Access Granted");
+                        accessGranted = true;
+                        break;
+                    } else {
+                        attempts++;
+                        if (attempts < 3) {
+                            System.out.println("Incorrect PIN, try again.");
+                        }
+                    }
+                }
+
+                if (!accessGranted) {
+                    System.out.println("Account locked");
+                }
+
+                sc.close();
             }
         }
-        inputobj.close();
-    }   
 
-}
